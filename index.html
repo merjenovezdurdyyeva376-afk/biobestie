@@ -1,0 +1,745 @@
+
+<!DOCTYPE html>
+<html lang="tk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BioBestie</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e8f8ee;
+      text-align: center;
+      padding: 25px;
+    }
+
+    .karta {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      margin-top: 40px;
+    }
+
+    h1 {
+      color: #16834a;
+    }
+
+    button {
+      background: #16834a;
+      color: white;
+      border: none;
+      padding: 14px 25px;
+      border-radius: 12px;
+      font-size: 17px;
+    }
+ 
+/* BioBestie ylmy kartalary */
+.ylymlar {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 20px 0;
+}
+
+.ylym-karta {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px #00000018;
+  text-align: left;
+  color: #245b3b;
+}
+
+.ylym-karta img {
+  width: 100%;
+  height: 125px;
+  object-fit: cover;
+  display: block;
+}
+
+.ylym-karta .karta-metin {
+  padding: 10px;
+}
+
+.ylym-karta h3 {
+  margin: 4px 0 8px;
+  font-size: 17px;
+}
+
+.ylym-karta p {
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.ylym-karta button {
+  width: 100%;
+  padding: 9px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 9px;
+  background: #dff3e4;
+  color: #245b3b;
+  font-weight: bold;
+}
+ </style>
+<h2>📚 Ylymlar dünýäsine hoş geldiň!</h2>
+<p>Öwrenmek isleýän ylmyňy saýla, bestie! 💚</p>
+
+<div class="ylymlar">
+
+  <div class="ylym-karta">
+    <img
+      src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=500&q=80"
+      alt="Ösümlikler">
+    <div class="karta-metin">
+      <h3>🌿 Botanika</h3>
+      <p>Ösümlikleriň gurluşyny we ýaşaýşyny öwren.</p>
+      <button onclick="botanikaAc()">Sapaga geç</button>
+    </div>
+  </div>
+
+  <div class="ylym-karta">
+    <img
+      src="https://images.unsplash.com/photo-1535338454770-8be927b5a00b?auto=format&fit=crop&w=500&q=80"
+      alt="Haýwanlar">
+    <div class="karta-metin">
+      <h3>🦋 Zoologiýa</h3>
+      <p>Haýwanlar dünýäsi bilen tanyş.</p>
+      <button onclick="zoologiaAc()">Sapaga geç</button>
+    </div>
+  </div>
+
+  <div class="ylym-karta">
+    <img
+      src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&w=500&q=80"
+      alt="Adam bedeniniň gurluşy">
+    <div class="karta-metin">
+      <h3>🫀 Anatomiýa</h3>
+      <p>Adam bedeniniň organlaryny öwren.</p>
+      <button onclick="anatomiýaAc()">Sapaga geç</button>
+    </div>
+  </div>
+
+  <div class="ylym-karta">
+    <img
+      src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&w=500&q=80"
+      alt="Öýjükler">
+    <div class="karta-metin">
+      <h3>🔬 Sitologiýa</h3>
+      <p>Öýjügiň gurluşyny we böleklerini öwren.</p>
+      <button onclick="sitologiýaAc()">Sapaga geç</button>
+    </div>
+  </div>
+
+</div>
+
+<div id="ylym-netije"></div>
+
+</head>
+
+<div id="sitologiýa-sapak" style="display:none; background:#f0fff4; padding:16px; border-radius:16px; margin-top:20px;">
+
+  <h2>🔬 Sitologiýa: Öýjügiň gurluşy</h2>
+
+  <p><b>Sitologiýa</b> — öýjükleri öwrenýän biologiýa bölümi.</p>
+
+  <h3>Öýjügiň esasy bölekleri</h3>
+
+  <svg viewBox="0 0 320 200" width="100%" role="img" aria-label="Öýjügiň esasy bölekleriniň şekilli düşündirişi">
+    <rect x="12" y="12" width="296" height="176" rx="80" fill="#d8f3dc" stroke="#238636" stroke-width="4"/>
+    <ellipse cx="150" cy="96" rx="39" ry="33" fill="#b8c0ff" stroke="#5145cd" stroke-width="3"/>
+    <circle cx="151" cy="96" r="12" fill="#5145cd"/>
+    <ellipse cx="225" cy="66" rx="20" ry="10" fill="#ffb4a2" stroke="#d94841" stroke-width="2"/>
+    <ellipse cx="83" cy="130" rx="20" ry="9" fill="#ffd166" stroke="#b7791f" stroke-width="2"/>
+    <text x="150" y="100" font-size="10" fill="white" text-anchor="middle">Ýadro</text>
+    <text x="160" y="166" font-size="12" fill="#245b3b" text-anchor="middle">Sitoplazma</text>
+    <text x="160" y="29" font-size="12" fill="#245b3b" text-anchor="middle">Membrana</text>
+  </svg>
+
+  <p>🟢 <b>Membrana</b> — öýjügi daşyndan gurşap, maddalaryň geçişini saýlap düzgünleşdirýär.</p>
+  <p>🟡 <b>Sitoplazma</b> — öýjügiň içini doldurýan, köp hadysalaryň geçýän gurşawy.</p>
+  <p>🟣 <b>Ýadro</b> — eukariot öýjüklerde DNK-nyň köp bölegini saklaýar we öýjügiň işlerini düzgünleşdirmäge gatnaşýar.</p>
+
+  <h3>📝 Kiçi test</h3>
+  <p id="sorag">1. Öýjükleri öwrenýän ylym haýsy?</p>
+
+  <button onclick="jogapBarla(0)">A) Botanika</button>
+  <button onclick="jogapBarla(1)">B) Sitologiýa</button>
+  <button onclick="jogapBarla(2)">C) Zoologiýa</button>
+
+  <p id="test-netije"></p>
+  <button onclick="indikiSorag()">Indiki sorag ➡️</button>
+</div>
+
+<script>
+let soragNo = 0;
+let dogryBal = 0;
+
+const soraglar = [
+  {
+    s: "1. Öýjükleri öwrenýän ylym haýsy?",
+    j: ["Botanika", "Sitologiýa", "Zoologiýa"],
+    d: 1
+  },
+  {
+    s: "2. Öýjügi daşyndan gurşap duran bölek haýsy?",
+    j: ["Membrana", "Ýadro", "Ribosoma"],
+    d: 0
+  },
+  {
+    s: "3. Eukariot öýjüklerde DNK-nyň köp bölegi nirede ýerleşýär?",
+    j: ["Membranada", "Sitoplazmada", "Ýadroda"],
+    d: 2
+  },
+  {
+    s: "4. Sitoplazma näme?",
+    j: ["Öýjügiň içki gurşawy", "Öýjügiň daşky diwary", "Diňe ösümlikde bolýan organoid"],
+    d: 0
+  },
+  {
+    s: "5. Ösümlik öýjüginde, haýwan öýjüginden tapawutlylykda, adatça haýsy gurluş bolýar?",
+    j: ["Ýadro", "Hloroplast", "Membrana"],
+    d: 1
+  }
+];
+
+function sitologiýaAc() {
+  document.getElementById("sitologiýa-sapak").style.display = "block";
+  document.getElementById("sitologiýa-sapak").scrollIntoView({behavior:"smooth"});
+  soragyGörkez();
+}
+
+function soragyGörkez() {
+  const q = soraglar[soragNo];
+  document.getElementById("sorag").textContent = q.s;
+  document.getElementById("test-netije").textContent = "";
+  const buttons = document.querySelectorAll("#sitologiýa-sapak button");
+  for (let i = 0; i < 3; i++) {
+    buttons[i].textContent = String.fromCharCode(65+i) + ") " + q.j[i];
+    buttons[i].disabled = false;
+  }
+}
+
+function jogapBarla(jogap) {
+  const buttons = document.querySelectorAll("#sitologiýa-sapak button");
+  if (buttons[0].disabled) return;
+  if (jogap === soraglar[soragNo].d) {
+    dogryBal++;
+    document.getElementById("test-netije").textContent = "Dogry! 💚";
+  } else {
+    document.getElementById("test-netije").textContent =
+      "Bu gezek nädogry. Dogry jogap: " +
+      soraglar[soragNo].j[soraglar[soragNo].d];
+  }
+  for (let i = 0; i < 3; i++) buttons[i].disabled = true;
+}
+
+function indikiSorag() {
+  if (!document.querySelectorAll("#sitologiýa-sapak button")[0].disabled) {
+    document.getElementById("test-netije").textContent = "Ilki jogaby saýla, bestie! 💚";
+    return;
+  }
+  soragNo++;
+  if (soragNo >= soraglar.length) {
+    document.getElementById("sorag").textContent =
+      "Test tamamlandy! Netije: " + dogryBal + " / " + soraglar.length;
+    document.getElementById("test-netije").textContent =
+      dogryBal >= 4 ? "Ajaýyp netije! 🎉" : "Gowy synanyşyk! Sapagy gaýtalap gör. 🌱";
+    document.querySelectorAll("#sitologiýa-sapak button").forEach(b => b.style.display = "none");
+    return;
+  }
+  soragyGörkez();
+}
+</script>
+<body>
+
+<script>
+function ylymAc(ylym) {
+  const netije = document.getElementById("ylym-netije");
+
+  const sapaklar = {
+    botanika: "Botanika — ösümlikleri öwrenýän ylym.",
+    "zoologiýa": "Zoologiýa — haýwanlary öwrenýän ylym.",
+    "anatomiýa": "Anatomiýa — organizmleriň gurluşyny öwrenýän ylym.",
+    "sitologiýa": "Sitologiýa — öýjükleri öwrenýän ylym."
+  };
+
+  netije.innerHTML =
+    "<h2>📖 Saýlanan bölüm</h2><p>" +
+    sapaklar[ylym] +
+    "</p>";
+}
+</script>
+
+<div id="botanika-sapak" style="display:none; background:#f0fff4; padding:16px; border-radius:16px; margin-top:20px;">
+
+  <h2>🌿 Botanika: Ösümlikleriň gurluşy</h2>
+
+  <p><b>Botanika</b> — ösümlikleri öwrenýän biologiýa bölümi.</p>
+
+  <h3>🌱 Ösümligiň esasy organlary</h3>
+
+  <p>🌿 <b>Kök</b> — ösümligi toprakda berkidýär we suwy, mineral maddalary siňdirýär.</p>
+
+  <p>🌱 <b>Baldak</b> — ösümlige daýanç bolýar we suw bilen maddalaryň daşalmagyna gatnaşýar.</p>
+
+  <p>🍃 <b>Ýaprak</b> — fotosinteziň esasy geçýän organlarynyň biridir.</p>
+
+  <p>🌸 <b>Gül</b> — gülli ösümlikleriň köpelmegine gatnaşýar.</p>
+  
+  <p>🌰 <b>Tohum</b> — täze ösümligiň ösüp başlamagyna mümkinçilik berýän, düwünçek saklaýan gurluşdyr.</p>
+
+  <h3>☀️ Fotosintez näme?</h3>
+
+  <p>Fotosintez wagtynda ösümlikler ýagtylygyň energiýasyny ulanyp, kömürturşy gazyndan we suwdan şeker emele getirýärler. Bu hadysada kislorod hem bölünip çykýar.</p>
+
+  <h3>📝 Botanika testi</h3>
+
+  <p id="bot-sorag"></p>
+
+  <div id="bot-jogaplar">
+    <button onclick="botanikaJogap(0)"></button>
+    <button onclick="botanikaJogap(1)"></button>
+    <button onclick="botanikaJogap(2)"></button>
+  </div>
+
+  <p id="bot-netije" aria-live="polite"></p>
+
+  <button id="bot-indiki" onclick="botanikaIndiki()">Indiki sorag ➡️</button>
+
+  <button id="bot-gaýtadan" onclick="botanikaGaýtadan()" style="display:none">🔄 Testi gaýtadan çöz</button>
+
+</div>
+
+<script>
+const botanikaSoraglar = [
+  {
+    s: "1. Botanika nämäni öwrenýär?",
+    j: ["Haýwanlary", "Ösümlikleri", "Öýjükleri"],
+    d: 1
+  },
+  {
+    s: "2. Haýsy organ toprakdan suw we mineral maddalary siňdirýär?",
+    j: ["Kök", "Gül", "Miwe"],
+    d: 0
+  },
+  {
+    s: "3. Fotosintez üçin haýsy energiýa çeşmesi zerur?",
+    j: ["Ses", "Ýagtylyk", "Magnit"],
+    d: 1
+  },
+  {
+    s: "4. Fotosintez wagtynda haýsy gaz bölünip çykýar?",
+    j: ["Azot", "Kömürturşy gazy", "Kislorod"],
+    d: 2
+  },
+  {
+    s: "5. Tohumyň içinde täze ösümligiň başlangyjy näme diýilýär?",
+    j: ["Düwünçek", "Ýaprak", "Kök gabygy"],
+    d: 0
+  }
+];
+
+let botanikaNo = 0;
+let botanikaBal = 0;
+let botanikaJogapBerildi = false;
+
+function botanikaAc() {
+  document.getElementById("botanika-sapak").style.display = "block";
+  botanikaGaýtadan();
+  document.getElementById("botanika-sapak").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function botanikaGörkez() {
+  const q = botanikaSoraglar[botanikaNo];
+  document.getElementById("bot-sorag").textContent = q.s;
+  document.getElementById("bot-netije").textContent = "";
+  botanikaJogapBerildi = false;
+
+  const btns = document.querySelectorAll("#bot-jogaplar button");
+
+  btns.forEach((btn, i) => {
+    btn.textContent = String.fromCharCode(65 + i) + ") " + q.j[i];
+    btn.disabled = false;
+    btn.style.display = "inline-block";
+  });
+
+  document.getElementById("bot-indiki").style.display = "inline-block";
+  document.getElementById("bot-indiki").textContent =
+    botanikaNo === 4 ? "Netijäni gör 🎯" : "Indiki sorag ➡️";
+  document.getElementById("bot-gaýtadan").style.display = "none";
+}
+
+function botanikaJogap(jogap) {
+  if (botanikaJogapBerildi) return;
+
+  botanikaJogapBerildi = true;
+  const q = botanikaSoraglar[botanikaNo];
+
+  if (jogap === q.d) {
+    botanikaBal++;
+    document.getElementById("bot-netije").textContent = "Dogry jogap! 💚";
+  } else {
+    document.getElementById("bot-netije").textContent =
+      "Dogry jogap: " + q.j[q.d] + " 🌱";
+  }
+
+  document.querySelectorAll("#bot-jogaplar button").forEach(btn => {
+    btn.disabled = true;
+  });
+}
+
+function botanikaIndiki() {
+  if (!botanikaJogapBerildi) {
+    document.getElementById("bot-netije").textContent =
+      "Ilki jogabyňy saýla, bestie! 💚";
+    return;
+  }
+
+  botanikaNo++;
+
+  if (botanikaNo >= botanikaSoraglar.length) {
+    document.getElementById("bot-sorag").textContent =
+      "Test tamamlandy! 🌿";
+    document.getElementById("bot-netije").textContent =
+      "Netijäň: " + botanikaBal + " / 5. " +
+      (botanikaBal >= 4 ? "Ajaýyp! 🎉" : "Gowy synanyşyk! Sapagy gaýtala.");
+    document.getElementById("bot-jogaplar").style.display = "none";
+    document.getElementById("bot-indiki").style.display = "none";
+    document.getElementById("bot-gaýtadan").style.display = "inline-block";
+    return;
+  }
+
+  botanikaGörkez();
+}
+
+function botanikaGaýtadan() {
+  botanikaNo = 0;
+  botanikaBal = 0;
+  botanikaJogapBerildi = false;
+  document.getElementById("bot-jogaplar").style.display = "block";
+  botanikaGörkez();
+}
+</script>
+
+<div id="zoologia-sapak" style="display:none; background:#f0fff4; padding:16px; border-radius:16px; margin-top:20px;">
+
+  <h2>🦋 Zoologiýa: Haýwanlar dünýäsi</h2>
+
+  <p><b>Zoologiýa</b> — haýwanlary öwrenýän biologiýa bölümi.</p>
+
+  <h3>🐾 Haýwanlaryň esasy toparlary</h3>
+  <p>🦋 <b>Oňurgasyzlar</b> — oňurga sütüni bolmadyk haýwanlar. Mysal: kebelekler, gurçuklar we meduzalar.</p>
+
+
+  <p>🐟 <b>Balyklar</b> — suwda ýaşaýar we žabra arkaly dem alýar.</p>
+
+  <p>🐸 <b>Suwda we gury ýerde ýaşaýanlar</b> — mysal üçin, gurbagalar. Olaryň köpüsi suw bilen gury ýeriň ikisinde-de ýaşaýar.</p>
+
+  <p>🐍 <b>Süýrenijiler</b> — ýylanlar, hažžyklar we pyşbagalar.</p>
+
+  <p>🐦 <b>Guşlar</b> — ýelekleri we çüňkleri bolýar.</p>
+
+  <p>🐘 <b>Süýdemdirijiler</b> — çagalaryny süýt bilen iýmitlendirýär. Mysal: adam, pişik we pil.</p>
+
+  <h3>🌎 Haýwanlar nirede ýaşaýar?</h3>
+
+  <p>Haýwanlar suwda, gury ýerde we howada duş gelýär. Her görnüşiň öz ýaşaýyş gurşawyna uýgunlaşan aýratynlyklary bolýar.</p>
+
+  <h3>📝 Zoologiýa testi</h3>
+
+  <p id="zoo-sorag"></p>
+
+  <div id="zoo-jogaplar">
+    <button onclick="zoologiaJogap(0)"></button>
+    <button onclick="zoologiaJogap(1)"></button>
+    <button onclick="zoologiaJogap(2)"></button>
+  </div>
+
+  <p id="zoo-netije" aria-live="polite"></p>
+
+  <button id="zoo-indiki" onclick="zoologiaIndiki()">Indiki sorag ➡️</button>
+
+  <button id="zoo-gaýtadan" onclick="zoologiaGaytadan()" style="display:none">🔄 Testi gaýtadan çöz</button>
+
+</div>
+
+<script>
+const zoologiaSoraglar = [
+  {
+    s: "1. Zoologiýa nämäni öwrenýär?",
+    j: ["Ösümlikleri", "Haýwanlary", "Daglary"],
+    d: 1
+  },
+  {
+    s: "2. Balyklar esasan haýsy organ arkaly dem alýar?",
+    j: ["Öýken", "Deri", "Žabra"],
+    d: 2
+  },
+  {
+    s: "3. Haýsy haýwanyň bedeni ýelek bilen örtülendir?",
+    j: ["Guş", "Pişik", "Balyk"],
+    d: 0
+  },
+  {
+    s: "4. Haýsy haýwan süýdemdirijidir?",
+    j: ["Gurbaga", "Pil", "Kebelek"],
+    d: 1
+  },
+  {
+    s: "5. Haýsy haýwan oňurgasyzdyr?",
+    j: ["Ýylan", "Pişik", "Kebelek"],
+    d: 2
+  }
+];
+
+let zoologiaNo = 0;
+let zoologiaBal = 0;
+let zoologiaJogapBerildi = false;
+
+function zoologiaAc() {
+  document.getElementById("zoologia-sapak").style.display = "block";
+  zoologiaGaytadan();
+  document.getElementById("zoologia-sapak").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function zoologiaGorkez() {
+  const q = zoologiaSoraglar[zoologiaNo];
+
+  document.getElementById("zoo-sorag").textContent = q.s;
+  document.getElementById("zoo-netije").textContent = "";
+  zoologiaJogapBerildi = false;
+
+  const btns = document.querySelectorAll("#zoo-jogaplar button");
+
+  btns.forEach((btn, i) => {
+    btn.textContent = String.fromCharCode(65 + i) + ") " + q.j[i];
+    btn.disabled = false;
+  });
+
+  document.getElementById("zoo-indiki").style.display = "inline-block";
+  document.getElementById("zoo-indiki").textContent =
+    zoologiaNo === 4 ? "Netijäni gör 🎯" : "Indiki sorag ➡️";
+
+  document.getElementById("zoo-gaýtadan").style.display = "none";
+}
+
+function zoologiaJogap(jogap) {
+  if (zoologiaJogapBerildi) return;
+
+  zoologiaJogapBerildi = true;
+  const q = zoologiaSoraglar[zoologiaNo];
+
+  if (jogap === q.d) {
+    zoologiaBal++;
+    document.getElementById("zoo-netije").textContent = "Dogry jogap! 💚";
+  } else {
+    document.getElementById("zoo-netije").textContent =
+      "Dogry jogap: " + q.j[q.d] + " 🐾";
+  }
+
+  document.querySelectorAll("#zoo-jogaplar button").forEach(btn => {
+    btn.disabled = true;
+  });
+}
+
+function zoologiaIndiki() {
+  if (!zoologiaJogapBerildi) {
+    document.getElementById("zoo-netije").textContent =
+      "Ilki jogabyňy saýla, bestie! 💚";
+    return;
+  }
+
+  zoologiaNo++;
+
+  if (zoologiaNo >= zoologiaSoraglar.length) {
+    document.getElementById("zoo-sorag").textContent =
+      "Test tamamlandy! 🦋";
+
+    document.getElementById("zoo-netije").textContent =
+      "Netijäň: " + zoologiaBal + " / 5. " +
+      (zoologiaBal >= 4
+        ? "Ajaýyp netije! 🎉"
+        : "Gowy synanyşyk! Sapagy gaýtalap gör. 🌱");
+
+    document.getElementById("zoo-jogaplar").style.display = "none";
+    document.getElementById("zoo-indiki").style.display = "none";
+    document.getElementById("zoo-gaýtadan").style.display = "inline-block";
+    return;
+  }
+
+  zoologiaGorkez();
+}
+
+function zoologiaGaytadan() {
+  zoologiaNo = 0;
+  zoologiaBal = 0;
+  zoologiaJogapBerildi = false;
+
+  document.getElementById("zoo-jogaplar").style.display = "block";
+  zoologiaGorkez();
+}
+</script>
+
+<div id="anatomiya-sapak" style="display:none; background:#f0fff4; padding:16px; border-radius:16px; margin-top:20px;">
+
+  <h2>🫀 Anatomiýa: Adam bedeni</h2>
+
+  <p><b>Anatomiýa</b> — janly organizmleriň gurluşyny, şol sanda adam bedeniniň organlaryny öwrenýän ylym.</p>
+
+  <h3>🧠 Esasy organlar we olaryň wezipeleri</h3>
+
+  <p>🧠 <b>Beýni</b> — nerw ulgamynyň esasy bölegi bolup, bedeniň köp işlerini dolandyrýar.</p>
+
+  <p>❤️ <b>Ýürek</b> — gany gan damarlary arkaly aýlaýar.</p>
+
+  <p>🫁 <b>Öýken</b> — dem alyşda kislorodyň gana geçmegine we kömürturşy gazynyň çykarylmagyna gatnaşýar.</p>
+
+  <p>🍽️ <b>Aşgazan</b> — iýmitiň garyşmagyna we onuň siňdirilişiniň başlanmagyna gatnaşýar.</p>
+
+  <p>🫘 <b>Böwrekler</b> — gany süzüp, artykmaç suw we galyndy maddalaryň peşew arkaly çykarylmagyna gatnaşýar.</p>
+
+  <h3>🧍 Organlar ulgamy</h3>
+
+  <p>Adam bedeninde birnäçe organlar ulgamy bar. Mysal üçin, ýürek-damar ulgamy gany daşaýar, dem alyş ulgamy gaz çalşygyny amala aşyrýar, iýmit siňdiriş ulgamy bolsa iýmiti gaýtadan işleýär.</p>
+
+  <h3>📝 Anatomiýa testi</h3>
+
+  <p id="ana-sorag"></p>
+
+  <div id="ana-jogaplar">
+    <button onclick="anatomiyaJogap(0)"></button>
+    <button onclick="anatomiyaJogap(1)"></button>
+    <button onclick="anatomiyaJogap(2)"></button>
+  </div>
+
+  <p id="ana-netije" aria-live="polite"></p>
+
+  <button id="ana-indiki" onclick="anatomiyaIndiki()">Indiki sorag ➡️</button>
+
+  <button id="ana-gaýtadan" onclick="anatomiyaGaytadan()" style="display:none">🔄 Testi gaýtadan çöz</button>
+
+</div>
+
+<script>
+const anatomiyaSoraglar = [
+  {
+    s: "1. Anatomiýa nämäni öwrenýär?",
+    j: ["Organizmleriň gurluşyny", "Diňe ösümlikleri", "Diňe bakteriýalary"],
+    d: 0
+  },
+  {
+    s: "2. Gany bedene aýlaýan organ haýsy?",
+    j: ["Aşgazan", "Ýürek", "Böwrek"],
+    d: 1
+  },
+  {
+    s: "3. Haýsy organ dem alyşda gaz çalşygyna gatnaşýar?",
+    j: ["Öýken", "Bagyr", "Süňk"],
+    d: 0
+  },
+  {
+    s: "4. Beýni haýsy ulgamyň esasy bölegidir?",
+    j: ["Iýmit siňdiriş", "Nerw", "Süňk"],
+    d: 1
+  },
+  {
+    s: "5. Böwrekleriň esasy wezipeleriniň biri haýsy?",
+    j: ["Gany süzmek", "Gany aýlamak", "Howa kabul etmek"],
+    d: 0
+  }
+];
+
+let anatomiyaNo = 0;
+let anatomiyaBal = 0;
+let anatomiyaJogapBerildi = false;
+
+function anatomiýaAc() {
+  document.getElementById("anatomiya-sapak").style.display = "block";
+  anatomiyaGaytadan();
+  document.getElementById("anatomiya-sapak").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function anatomiyaGorkez() {
+  const q = anatomiyaSoraglar[anatomiyaNo];
+
+  document.getElementById("ana-sorag").textContent = q.s;
+  document.getElementById("ana-netije").textContent = "";
+  anatomiyaJogapBerildi = false;
+
+  document.querySelectorAll("#ana-jogaplar button").forEach((btn, i) => {
+    btn.textContent = String.fromCharCode(65 + i) + ") " + q.j[i];
+    btn.disabled = false;
+  });
+
+  document.getElementById("ana-indiki").style.display = "inline-block";
+  document.getElementById("ana-indiki").textContent =
+    anatomiyaNo === 4 ? "Netijäni gör 🎯" : "Indiki sorag ➡️";
+
+  document.getElementById("ana-gaýtadan").style.display = "none";
+}
+
+function anatomiyaJogap(jogap) {
+  if (anatomiyaJogapBerildi) return;
+
+  anatomiyaJogapBerildi = true;
+  const q = anatomiyaSoraglar[anatomiyaNo];
+
+  if (jogap === q.d) {
+    anatomiyaBal++;
+    document.getElementById("ana-netije").textContent = "Dogry jogap! 💚";
+  } else {
+    document.getElementById("ana-netije").textContent =
+      "Dogry jogap: " + q.j[q.d] + " 🫀";
+  }
+
+  document.querySelectorAll("#ana-jogaplar button").forEach(btn => {
+    btn.disabled = true;
+  });
+}
+
+function anatomiyaIndiki() {
+  if (!anatomiyaJogapBerildi) {
+    document.getElementById("ana-netije").textContent =
+      "Ilki jogabyňy saýla, bestie! 💚";
+    return;
+  }
+
+  anatomiyaNo++;
+
+  if (anatomiyaNo >= anatomiyaSoraglar.length) {
+    document.getElementById("ana-sorag").textContent = "Test tamamlandy! 🎉";
+    document.getElementById("ana-netije").textContent =
+      "Netijäň: " + anatomiyaBal + " / 5. " +
+      (anatomiyaBal >= 4
+        ? "Ajaýyp netije! 💚"
+        : "Gowy synanyşyk! Sapagy gaýtalap gör. 🌱");
+
+    document.getElementById("ana-jogaplar").style.display = "none";
+    document.getElementById("ana-indiki").style.display = "none";
+    document.getElementById("ana-gaýtadan").style.display = "inline-block";
+    return;
+  }
+
+  anatomiyaGorkez();
+}
+
+function anatomiyaGaytadan() {
+  anatomiyaNo = 0;
+  anatomiyaBal = 0;
+  anatomiyaJogapBerildi = false;
+
+  document.getElementById("ana-jogaplar").style.display = "block";
+  anatomiyaGorkez();
+}
+</script>
+
+</body>
+</html>
